@@ -3,6 +3,7 @@ import '../../src/App.css'
 import Boton from "./Boton";
 import Footer from "./Footer";
 import BotonCalcula from "./BotonCalcula";
+import BotonPrecioPeajes from "./BotonPrecioPeajes";
 
 //import backimage from "../../public/mapa-parques-de-santander-pyej1zploo0n09itfjpdc54l4xwkflmal0rws6u96o.jpg"
 
@@ -11,15 +12,17 @@ const Form = () => {
   // Declaración de constantes y variables
   const [input, setInput] = React.useState({
     num1: "",
-    num2: ""
+    num2: "",
+    num3:""
   });
 
   const [resultado, setResultado] = useState();
   const [peajes, setPeajes] = useState();
+  const [valPeaje, setValorPeaje] = useState();
   let inputKilometros = ((input.num1))
   let totalpeajes=(((inputKilometros)/84).toFixed(2))
   const inputRef = useRef(null);
-  const regexp =/^[0-9]+$/
+  const regexp =/^[0-9/s]+$/g
 
   let precioKm = (((((input.num2)*13.2)/4)/10)/10)
   console.log("precio kms " + precioKm)
@@ -41,26 +44,28 @@ const Form = () => {
     return new Intl.NumberFormat("es-CO").format(valor)
     }
 
-  const calcular = (e) => {
-    e.preventDefault()
-    if(input.num1 == 0 || input.num2 == 0){
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "No se permiten campos vacíos, ni operaciones con 0",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      setResultado("") 
-    }else{
-      setResultado((+precioKm) + (+totalGasolina)+(peajes))
-        input.num1 = "";
-        focus()
-        resetField(input.num2);
-        inputRef.current.focus() 
-        setFocus()
-    }
-  };
+    const nombre = "lok"
+
+  // const calcular = (e) => {
+  //   e.preventDefault()
+  //   if(input.num1 == 0 || input.num2 == 0){
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops...",
+  //       text: "No se permiten campos vacíos, ni operaciones con 0",
+  //       showConfirmButton: false,
+  //       timer: 2000,
+  //     });
+  //     setResultado("") 
+  //   }else{
+  //     setResultado((+precioKm) + (+totalGasolina)+(peajes))
+  //       input.num1 = "";
+  //       focus()
+  //       resetField(input.num2);
+  //       inputRef.current.focus() 
+  //       setFocus()
+  //   }
+  // };
 
   const handleInput = function (e) {
   if(!e.target.value.match(regexp)){
@@ -84,6 +89,17 @@ const Form = () => {
     {inputRef.current.focus()}
   }
 
+  function  irGoogle (){
+    return(Swal.fire({
+      icon: "info",
+      title: "Atención",
+      text: "Será redirigido a Google Maps",
+      showConfirmButton: false,
+      timer: 2000,
+    }))
+    
+  }
+
   return (
     <>
     <div className="backgrd">
@@ -97,7 +113,7 @@ const Form = () => {
             <label htmlFor="kilo">Ingrese el número de kilómetros</label>
             </div>
             <div>
-            <a class="mensaje" id="mensaje" target="_blank" href="https://www.google.com/maps/dir/Fresno,+Tolima//@5.1520983,-75.0713318,13z/data=!4m9!4m8!1m5!1m1!1s0x8e474bbfe89f4c4f:0xb67f73a83b215206!2m2!1d-75.036312!2d5.1520138!1m0!3e0">Ir a Google maps</a>
+            <a onClick={irGoogle} class="mensaje" id="mensaje" href="https://www.google.com/maps/dir/Fresno,+Tolima//@5.1520983,-75.0713318,13z/data=!4m9!4m8!1m5!1m1!1s0x8e474bbfe89f4c4f:0xb67f73a83b215206!2m2!1d-75.036312!2d5.1520138!1m0!3e0">Ir a Google maps</a>
             </div>
             <div className="aviso">
               {input.num1 === ""
@@ -130,8 +146,9 @@ const Form = () => {
      />
 
       </div>
-      <button  className="boton" onClick={calcular}>Nuevo viaje</button>
-      {/* <BotonCalcula/> */}
+      {/* <button  className="boton" onClick={calcular}>Nuevo viaje</button> */}
+       <BotonCalcula kms={input.num1} gas={input.num2} refe={inputRef} setData={setInput}/>
+       {/* <BotonPrecioPeajes vPeaje={valPeaje} sVPeaje={setValorPeaje}/> */}
      
       <div className="caja-text">
       {input.num1>0 && input.num2!=="" && input.num2>0?

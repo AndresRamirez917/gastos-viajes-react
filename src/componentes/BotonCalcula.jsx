@@ -1,34 +1,52 @@
-import React, { useState } from 'react'
-//import calcula from "../funciones/Calcular";
+import React, { useRef, useState } from "react";
+import calcula from "../funciones/Calcular";
 
-const calcula = (e) => {
-    e.preventDefault()
+const BotonCalcula = (props) => {
+  //const inputRef = useRef(null);
+  const calcul = (e) => {
 
-     if((input.num1 == "") || (input.num2 == "")){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "No se permiten letras ni signos",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          alert("madre")
+    const resetinputs = () =>{
+      document.getElementById("kilo").value=""
+      document.getElementById("gas").value=""
+    } 
+    e.preventDefault();
+
+    if (props.kms == "" || props.gas == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "vacío",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    } else if (props.kms == 0 || props.gas == 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "cero",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }else{
-       alert("madre")
-    }
+      focus();
+      props.setData("")
+      resetinputs()
+    } 
+     
   };
 
+  const focus = () => {
+    //inputRef es una variable declarada al inicio del código
+    props.refe.current.focus();
+  };
 
-const BotonCalcula = () => {
-    const [input, setInput] = useState({
-    num1:"",
-    mum2:""
-})
   return (
-    <div className='boton'>
-          <button  className="boton" onClick={calcula}>Nuevo </button>
-    </div>
-  )
-}
+  
+      <button className="boton" onClick={calcul}>
+        Nuevo viaje
+      </button>
+    
+  );
+};
 
-export default BotonCalcula
+export default BotonCalcula;

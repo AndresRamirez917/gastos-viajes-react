@@ -53,7 +53,7 @@ flex-direction: column;
   border-radius: 5px;
   padding: 20px;
 width: 300px;
-background-color: rgb(3, 3, 36);
+background-color: rgba(4, 4, 54, 0.966);
 color: white;
 margin-bottom: 10px;
 }
@@ -103,7 +103,7 @@ to {
  .footer{
   display: flex;
   flex-direction: column;
-  background-color: rgb(3, 3, 36);
+  background-color: rgba(4, 4, 54, 0.966);
   color: white;
   text-align: center;
   width: max-content;
