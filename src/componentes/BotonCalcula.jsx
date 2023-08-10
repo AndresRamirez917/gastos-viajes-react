@@ -1,21 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import calcula from "../funciones/Calcular";
+import { Contexto } from "../contexto/Contexto";
+import { Datos } from "../contexto/Contexto";
+
 
 const BotonCalcula = (props) => {
-  //const inputRef = useRef(null);
+  const {setColor} = useContext(Contexto)
   const calcul = (e) => {
-
-    const resetinputs = () =>{
-      document.getElementById("kilo").value=""
-      document.getElementById("gas").value=""
-    } 
+const inputKilo = document.getElementById("kilo").value=""
+const inputGas =  document.getElementById("gas").value="" 
     e.preventDefault();
-
-    if (props.kms == "" || props.gas == "") {
+   
+    if (((props.kms === "") || (props.gas === "")) || ((props.kms === undefined) || (props.gas === undefined))) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "vacío",
+        text: "Los campos no pueden estar vacíos ",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -23,29 +23,33 @@ const BotonCalcula = (props) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "cero",
+        text: "No se permiten operaciones con cero",
         showConfirmButton: false,
         timer: 2000,
       });
     }else{
-      focus();
-      props.setData("")
-      resetinputs()
-    } 
-     
+      focus();  
+      props.setData("") 
+cambiaColor()
+    }     
   };
 
-  const focus = () => {
-    //inputRef es una variable declarada al inicio del código
+  const cambiaColor = ()=>{
+    //setColor que viene desde el contexto
+    setColor("#4285f4")
+  }
+
+  const focus = () => {    
     props.refe.current.focus();
   };
 
   return (
-  
+    <>
       <button className="boton" onClick={calcul}>
         Nuevo viaje
-      </button>
-    
+      </button> 
+      
+      </>
   );
 };
 

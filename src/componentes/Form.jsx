@@ -1,19 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import '../../src/App.css'
-import Boton from "./Boton";
 import Footer from "./Footer";
 import BotonCalcula from "./BotonCalcula";
-import BotonPrecioPeajes from "./BotonPrecioPeajes";
-
-//import backimage from "../../public/mapa-parques-de-santander-pyej1zploo0n09itfjpdc54l4xwkflmal0rws6u96o.jpg"
-
+import Resultado from "./Resultado";
+import { Contexto } from "../contexto/Contexto";
+import { Datos } from "../contexto/Contexto";
 
 const Form = () => {
   // Declaración de constantes y variables
   const [input, setInput] = React.useState({
     num1: "",
-    num2: "",
-    num3:""
+    num2: ""
   });
 
   const [resultado, setResultado] = useState();
@@ -46,26 +43,7 @@ const Form = () => {
 
     const nombre = "lok"
 
-  // const calcular = (e) => {
-  //   e.preventDefault()
-  //   if(input.num1 == 0 || input.num2 == 0){
-  //     Swal.fire({
-  //       icon: "error",
-  //       title: "Oops...",
-  //       text: "No se permiten campos vacíos, ni operaciones con 0",
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //     });
-  //     setResultado("") 
-  //   }else{
-  //     setResultado((+precioKm) + (+totalGasolina)+(peajes))
-  //       input.num1 = "";
-  //       focus()
-  //       resetField(input.num2);
-  //       inputRef.current.focus() 
-  //       setFocus()
-  //   }
-  // };
+    //código 1
 
   const handleInput = function (e) {
   if(!e.target.value.match(regexp)){
@@ -99,13 +77,17 @@ const Form = () => {
     }))
     
   }
+//color que usará el valor de setColor desde BotonCalcula
+const {color} = useContext(Contexto)
 
   return (
+    
     <>
-    <div className="backgrd">
+
+    <div className="backgrd" >
       <div className="containe">
         <img id="carro2" src="kisspng-car-clip-art-audi-q3-car-5a74c1dadf5c36.7852431415176012429149 (1).png" alt=""></img>
-        <div className="caja"> 
+        <div className="caja" style={{backgroundColor:color}}> 
         <h1 className="titulo">Cálculo gastos gasolina y peajes</h1>       
         <form>
             <div> 
@@ -151,7 +133,52 @@ const Form = () => {
        {/* <BotonPrecioPeajes vPeaje={valPeaje} sVPeaje={setValorPeaje}/> */}
      
       <div className="caja-text">
-      {input.num1>0 && input.num2!=="" && input.num2>0?
+     {/* código 2 */}
+      { <Resultado kms={input.num1} gas={input.num2} totalpeajes={totalpeajes} peajes={peajes} precioKm={precioKm} totalGasolina={totalGasolina} converDivisa={converDivisa} inputKilometros={inputKilometros}/>}
+   {/* <h1>{color}</h1> */}
+      </div>
+       </form> 
+        </div>
+        <Footer/>
+      </div>
+      </div>
+
+    </>
+    
+  );
+};
+
+export default Form;
+ //código 1
+
+ // const calcular = (e) => {
+  //   e.preventDefault()
+  //   if(input.num1 == 0 || input.num2 == 0){
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops...",
+  //       text: "No se permiten campos vacíos, ni operaciones con 0",
+  //       showConfirmButton: false,
+  //       timer: 2000,
+  //     });
+  //     setResultado("") 
+  //   }else{
+  //     setResultado((+precioKm) + (+totalGasolina)+(peajes))
+  //       input.num1 = "";
+  //       focus()
+  //       resetField(input.num2);
+  //       inputRef.current.focus() 
+  //       setFocus()
+  //   }
+  // };
+
+
+
+
+
+
+//código 2
+ {/* {input.num1>0 && input.num2!=="" && input.num2>0?
         <div>El costo de la gasolina ida y vuela tiene un valor aproximado de ${converDivisa(((+precioKm) + (+totalGasolina)).toFixed(0))} pesos</div>
         :console.log("")
       }  
@@ -159,17 +186,4 @@ const Form = () => {
 {totalpeajes>1 && input.num2!=="" && input.num2>0?
       <div>Número de peajes calculado {Number(((inputKilometros)/84).toFixed(0))*2}, su costo es de ${converDivisa(peajes*2)} pesos, para un total de ${converDivisa(Number(((+precioKm) + (+totalGasolina)).toFixed(0)) + (Number(peajes*2)))} pesos</div>
       :console.log("")
-      }
-
-      </div>
-       </form> 
-        </div>
-        <Footer/>
-      </div>
-      </div>
-    </>
-  );
-};
-
-export default Form;
-
+      } */}

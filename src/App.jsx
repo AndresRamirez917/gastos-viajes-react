@@ -7,6 +7,9 @@ import Form from './componentes/Form'
 import Footer from './componentes/Footer'
 //import backimage from "../public/mapa-parques-de-santander-pyej1zploo0n09itfjpdc54l4xwkflmal0rws6u96o.jpg"
 import calcular from './funciones/Calcular'
+import { Contexto } from './contexto/Contexto'
+import { Datos } from './contexto/Contexto'
+import BotonCalcula from './componentes/BotonCalcula'
 
 function App() {
   const saludar = () =>{
@@ -15,9 +18,11 @@ function App() {
 
   return (
     <>
+   <Datos>
     <div className='container'>
    <Form />
    </div>
+    </Datos>
     </>
   )
 }
