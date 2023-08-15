@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import '../../src/App.css'
+import '../../src/mobile.css'
 import Footer from "./Footer";
 import BotonCalcula from "./BotonCalcula";
 import Resultado from "./Resultado";
 import { Contexto } from "../contexto/Contexto";
-import { Datos } from "../contexto/Contexto";
+import BotonPrecioPeaje from "./BotonPrecioPeaje";
 
 const Form = () => {
   // Declaración de constantes y variables
@@ -15,26 +16,26 @@ const Form = () => {
 
   const [resultado, setResultado] = useState();
   const [peajes, setPeajes] = useState();
-  const [valPeaje, setValorPeaje] = useState();
+  const [valPeaje, setValorPeaje] = useState(12300);
   let inputKilometros = ((input.num1))
   let totalpeajes=(((inputKilometros)/84).toFixed(2))
   const inputRef = useRef(null);
   const regexp =/^[0-9/s]+$/g
 
   let precioKm = (((((input.num2)*13.2)/4)/10)/10)
-  console.log("precio kms " + precioKm)
+  //console.log("precio kms " + precioKm)
   let totalGasolina = (parseInt(input.num1)*precioKm)*2;
 
   // Declaración de funciones
   useEffect(()=>{
-    let valPeaje = 12000;
+    //let valPeaje = 12000;
      let inputKilometros = ((input.num1))
      let totalpeajes=Math.round(((inputKilometros*100)/100)/84).toFixed(2)
-     console.table(totalpeajes, totalpeajes)
+     //console.table(totalpeajes, totalpeajes)
      let totpeajes = totalpeajes
-     console.log("número total de peajes " + totpeajes)
+     //console.log("número total de peajes " + totpeajes)
      setPeajes(Math.round((totalpeajes*100)/100)*valPeaje)
- console.log("precio " + peajes)
+ //console.log("precio " + peajes)
   })
 
   const converDivisa = function(valor){
@@ -84,19 +85,21 @@ const {color} = useContext(Contexto)
     
     <>
 
-    <div className="backgrd" >
-      <div className="containe">
+    {/* <div className="backgrd" > */}
+      <div className="container">
+        <div className="wrapper">
         <img id="carro2" src="kisspng-car-clip-art-audi-q3-car-5a74c1dadf5c36.7852431415176012429149 (1).png" alt=""></img>
         <div className="caja" style={{backgroundColor:color}}> 
         <h1 className="titulo">Cálculo gastos gasolina y peajes</h1>       
-        <form>
+     
+        <div>
+            <a onClick={irGoogle} class="mensaje" id="mensaje" href="https://www.google.com/maps/dir/Fresno,+Tolima//@5.1520983,-75.0713318,13z/data=!4m9!4m8!1m5!1m1!1s0x8e474bbfe89f4c4f:0xb67f73a83b215206!2m2!1d-75.036312!2d5.1520138!1m0!3e0">Ir a Google maps</a>
+            </div>
             <div> 
                       
             <label htmlFor="kilo">Ingrese el número de kilómetros</label>
             </div>
-            <div>
-            <a onClick={irGoogle} class="mensaje" id="mensaje" href="https://www.google.com/maps/dir/Fresno,+Tolima//@5.1520983,-75.0713318,13z/data=!4m9!4m8!1m5!1m1!1s0x8e474bbfe89f4c4f:0xb67f73a83b215206!2m2!1d-75.036312!2d5.1520138!1m0!3e0">Ir a Google maps</a>
-            </div>
+           
             <div className="aviso">
               {input.num1 === ""
               ?<div>El campo está vacio</div>
@@ -129,19 +132,21 @@ const {color} = useContext(Contexto)
 
       </div>
       {/* <button  className="boton" onClick={calcular}>Nuevo viaje</button> */}
+      <div>
        <BotonCalcula kms={input.num1} gas={input.num2} refe={inputRef} setData={setInput}/>
-       {/* <BotonPrecioPeajes vPeaje={valPeaje} sVPeaje={setValorPeaje}/> */}
+       <BotonPrecioPeaje vPeaje={valPeaje} sVPeaje={setValorPeaje}/>
+       </div>
      
       <div className="caja-text">
      {/* código 2 */}
       { <Resultado kms={input.num1} gas={input.num2} totalpeajes={totalpeajes} peajes={peajes} precioKm={precioKm} totalGasolina={totalGasolina} converDivisa={converDivisa} inputKilometros={inputKilometros}/>}
-   {/* <h1>{color}</h1> */}
       </div>
-       </form> 
+       
         </div>
         <Footer/>
+        </div>
       </div>
-      </div>
+      {/* </div> */}
 
     </>
     

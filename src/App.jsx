@@ -18,11 +18,13 @@ function App() {
 
   return (
     <>
-   <Datos>
     <div className='container'>
+   <Datos>
+    
    <Form />
-   </div>
+   
     </Datos>
+    </div>
     </>
   )
 }
