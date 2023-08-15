@@ -4,7 +4,7 @@
     color: red;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     
         #carro2 {
             position: relative;
@@ -18,12 +18,12 @@
           
           @keyframes slidein {
             from {
-              margin-left: 40%;
+              margin-left: 45%;
               width: 100px
             }
           
             to {
-              margin-left: 85%;
+              margin-left: 65%;
               width: 100px;
             }
           }

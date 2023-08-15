@@ -66,27 +66,7 @@ margin: 0;
   color: red;
 }
 
-#carro2 {
-  position: relative;
-  right: 100px;
-  width: 50px;
-  height: 80px;
-  animation-duration: 6s;
-  animation-name: slidein;
-  animation-iteration-count: infinite;
-}
 
-@keyframes slidein {
-  from {
-    margin-left: 45%;
-    width: 100px
-  }
-
-  to {
-    margin-left: 65%;
-    width: 100px;
-  }
-}
 
 .titulo {
   text-align: center;
@@ -119,4 +99,30 @@ margin: 0;
 
 input {
   background-color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    
+  #carro2 {
+      position: relative;
+      right: 100px;
+      width: 50px;
+      height: 80px;
+      animation-duration: 6s;
+      animation-name: slidein;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes slidein {
+      from {
+        margin-left: 40%;
+        width: 100px
+      }
+    
+      to {
+        margin-left: 85%;
+        width: 100px;
+      }
+    }
+
 }
