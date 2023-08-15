@@ -48,8 +48,8 @@ cambiaColor()
   const cambiaColor = ()=>{
     //setColor que viene desde el contexto
     setColor(`${randomize}`)
-    alert(randomize)
-    console.log(randomize)
+    //alert(randomize)
+    //console.log(randomize)
   }
 
   const focus = () => {    
