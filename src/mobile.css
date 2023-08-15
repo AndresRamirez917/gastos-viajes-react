@@ -3,3 +3,29 @@
     grid-template-columns: repeat(1, 1fr);
     color: red;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        #carro2 {
+            position: relative;
+            right: 100px;
+            width: 50px;
+            height: 80px;
+            animation-duration: 6s;
+            animation-name: slidein;
+            animation-iteration-count: infinite;
+          }
+          
+          @keyframes slidein {
+            from {
+              margin-left: 40%;
+              width: 100px
+            }
+          
+            to {
+              margin-left: 150%;
+              width: 100px;
+            }
+          }
+    }
+  }

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import calcula from "../funciones/Calcular";
 import { Contexto } from "../contexto/Contexto";
 import { Datos } from "../contexto/Contexto";
 

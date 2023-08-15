@@ -1,50 +1,50 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-img{
+img {
   width: 100%;
 }
 
-body{
+body, html {
+  min-height: 100vh;
   background: url(/mapa-parques-de-santander-pyej1zploo0n09itfjpdc54l4xwkflmal0rws6u96o.jpg);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+margin: 0;
 }
 
-.containe{
+.containe {
   max-width: 1200px;
   padding: 0 200px;
-margin: 0 auto; 
-}
-
-.wrapper{
-
-}
-
-.caja{
   margin: 0 auto;
-display: flex;
-justify-content: center;
-flex-direction: column;
-  height:fit-content;
+}
+
+.wrapper {}
+
+.caja {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
   border: solid 1px black;
   border-radius: 5px;
   padding: 20px;
-width: 300px;
-background-color: rgba(4, 4, 54, 0.966);
-color: white;
-margin-bottom: 10px;
-align-items: center;
-align-self: center;
-justify-self: center;
-text-align: center;
+  width: 300px;
+  background-color: rgba(4, 4, 54, 0.966);
+  color: white;
+  margin-bottom: 10px;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
 }
 
-.boton{
+.boton {
   padding: 10px;
   background-color: blue;
   color: white;
@@ -56,49 +56,49 @@ text-align: center;
   margin: 10px 10px;
 }
 
-.caja-text{
+.caja-text {
   text-align: center;
 }
 
-.aviso{
-  margin:10px 0 10px 0;
+.aviso {
+  margin: 10px 0 10px 0;
   font-size: 12px;
   color: red;
 }
 
-#carro2{
+#carro2 {
   position: relative;
-right: 100px;
-width: 50px;
-height: 80px;
-animation-duration: 6s;
-animation-name: slidein;
-animation-iteration-count: infinite;
+  right: 100px;
+  width: 50px;
+  height: 80px;
+  animation-duration: 6s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
 }
 
 @keyframes slidein {
-from {
-  margin-left: 40%;
-  width: 100px
+  from {
+    margin-left: 45%;
+    width: 100px
+  }
+
+  to {
+    margin-left: 65%;
+    width: 100px;
+  }
 }
 
-to {
-  margin-left: 85%;
-  width: 100px;
-}
+.titulo {
+  text-align: center;
 }
 
-.titulo{
- text-align: center;
-}
-
-#mensaje{
+#mensaje {
   text-decoration: none;
-  font-weight:bolder ;
+  font-weight: bolder;
   color: rgba(41, 11, 212, 0.589);
 }
 
- .footer{
+.footer {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -108,15 +108,15 @@ to {
   width: max-content;
   padding: 12px;
   border-radius: 10px;
-border: solid 1px black;
+  border: solid 1px black;
 }
 
-.botonMuestra{
+.botonMuestra {
   position: relative;
   color: red;
   margin-top: -100px;
 }
 
-input{
+input {
   background-color: white;
 }
