@@ -30,7 +30,7 @@ margin: 0 auto;
 display: flex;
 justify-content: center;
 flex-direction: column;
-  height: 400px;
+  height:fit-content;
   border: solid 1px black;
   border-radius: 5px;
   padding: 20px;
