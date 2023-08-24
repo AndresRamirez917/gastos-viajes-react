@@ -6,6 +6,8 @@ import BotonCalcula from "./BotonCalcula";
 import Resultado from "./Resultado";
 import { Contexto } from "../contexto/Contexto";
 import BotonPrecioPeaje from "./BotonPrecioPeaje";
+import Navbar from "./Navbar";
+import UseWeather from "../hooks/UseWeather";
 
 const Form = () => {
   // Declaración de constantes y variables
@@ -21,6 +23,9 @@ const Form = () => {
   let totalpeajes=(((inputKilometros)/84).toFixed(2))
   const inputRef = useRef(null);
   const regexp =/^[0-9/s]+$/g
+  const [data, loading, error] = UseWeather("Fresno")
+
+
 
   let precioKm = (((((input.num2)*13.2)/4)/10)/10)
   //console.log("precio kms " + precioKm)
@@ -89,16 +94,31 @@ const {color} = useContext(Contexto)
       <div className="container">
         <div className="wrapper">
         <img id="carro2" src="kisspng-car-clip-art-audi-q3-car-5a74c1dadf5c36.7852431415176012429149 (1).png" alt=""></img>
+        
         <div className="caja" style={{backgroundColor:color}}> 
-        <h1 className="titulo">Cálculo gastos gasolina y peajes</h1>       
+        <h1 className="titulo">Cálculo gastos gasolina y peajes</h1>   
+
+            {console.log(data)}
+        {data && (
+        <div className="infoFresno">
+          <p>Temperatura en {data.city}: {data.temp}º</p>
+          <p className="clima">Cielo: {(data.estado==="overcast clouds"
+          ?"Nublado"
+          :data.estado==="broken clouds"
+          ?"Nubes Dispersas"
+          :null)}</p> 
+          {console.log(data.estado)}
+          {/* <p>Temperatura: {data.temp}º</p> */}
+          {/* <p>Temp mínima: {data.temp_min}º</p>
+          <p>Temp máxima: {data.temp_max}º</p>
+          <p>humedad: {data.humedad}%</p> */}
+        </div>
+      )}    
      
         <div>
             <a onClick={irGoogle} class="mensaje" id="mensaje" href="https://www.google.com/maps/dir/Fresno,+Tolima//@5.1520983,-75.0713318,13z/data=!4m9!4m8!1m5!1m1!1s0x8e474bbfe89f4c4f:0xb67f73a83b215206!2m2!1d-75.036312!2d5.1520138!1m0!3e0">Ir a Google maps</a>
             </div>
-            <div> 
-                      
-            <label htmlFor="kilo">Ingrese el número de kilómetros</label>
-            </div>
+          
            
             <div className="aviso">
               {input.num1 === ""
@@ -110,14 +130,16 @@ const {color} = useContext(Contexto)
                
               </div>
             <div>
+            <div> 
+                      
+                      <label htmlFor="kilo">Ingrese el número de kilómetros</label>
+                      </div>
         <input autoFocus ref={inputRef} id="kilo" name="num1" value ={input.num1} type="text" className="inpt"  onChange={handleInput} required:true 
         placeholder = "Kilómetros"   
        />           
         </div>
         
-        <div>
-        <label htmlFor="gas">Ingrese el valor de la gasolina</label>
-        </div>
+        
         <div className="aviso">
              {input.num2 === ""
               ?<div>El campo está vacío</div>
@@ -127,6 +149,9 @@ const {color} = useContext(Contexto)
               }
         </div>
         <div>
+        <div>
+        <label htmlFor="gas">Ingrese el valor de la gasolina</label>
+        </div>
       <input id="gas" className="inpt" name="num2" value ={input.num2} type="text" onChange={handleInput} placeholder = "Precio gasolina"  
      />
 

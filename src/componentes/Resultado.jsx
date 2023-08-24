@@ -5,7 +5,7 @@ const Resultado = (props) => {
     
     <>
 {props.kms>0 && props.gas!=="" && props.gas>0?
-        <div>El costo de la gasolina ida y vuela tiene un valor aproximado de ${props.converDivisa(((+props.precioKm) + (+props.totalGasolina)).toFixed(0))} pesos</div>
+        <div>El costo de la gasolina ida y vuelta tiene un valor aproximado de ${props.converDivisa(((+props.precioKm) + (+props.totalGasolina)).toFixed(0))} pesos</div>
         :null
       }  
 

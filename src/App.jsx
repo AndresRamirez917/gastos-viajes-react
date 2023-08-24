@@ -11,10 +11,12 @@ import { Contexto } from './contexto/Contexto'
 import { Datos } from './contexto/Contexto'
 import BotonCalcula from './componentes/BotonCalcula'
 
+
 function App() {
   const saludar = () =>{
     console.log("Saludo desde el segundo botón")
   }
+
 
   return (
     <>
