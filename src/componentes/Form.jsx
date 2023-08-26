@@ -101,6 +101,7 @@ const {color} = useContext(Contexto)
             {console.log(data)}
         {data && (
         <div className="infoFresno">
+     <p>madre</p>
           <p>Temperatura en {data.city}: {data.temp}º</p>
           <p className="clima">Cielo: {(data.estado==="overcast clouds"
           ?"Nublado"
