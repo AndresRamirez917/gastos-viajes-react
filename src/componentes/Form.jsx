@@ -20,7 +20,7 @@ const Form = () => {
   const [peajes, setPeajes] = useState();
   const [valPeaje, setValorPeaje] = useState(12300);
   let inputKilometros = ((input.num1))
-  let totalpeajes=(((inputKilometros)/84).toFixed(2))
+  let totalpeajes=(((inputKilometros)/87).toFixed(2))
   const inputRef = useRef(null);
   const regexp =/^[0-9/s]+$/g
   const [data, loading, error] = UseWeather("Fresno")
@@ -106,6 +106,8 @@ const {color} = useContext(Contexto)
           ?"Nublado"
           :data.estado==="broken clouds"
           ?"Nubes Dispersas"
+          :data.estado==="light rain"
+          ?"Lluvia ligera"
           :null)}</p> 
           {console.log(data.estado)}
           {/* <p>Temperatura: {data.temp}º</p> */}
