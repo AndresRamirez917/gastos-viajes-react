@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Resultado = (props) => {
+  let numPeajesCalculado = Number(Math.floor((props.inputKilometros)/84).toFixed(0))*2
   return (
     
     <>
@@ -10,7 +11,7 @@ const Resultado = (props) => {
       }  
 
 {props.totalpeajes>1 && props.gas!=="" && props.gas>0?
-      <div>Número de peajes calculado {Number(Math.floor((props.inputKilometros)/84).toFixed(0))*2}, su costo es de ${props.converDivisa(props.peajes*2)} pesos, para un total de ${props.converDivisa(Number(((+props.precioKm) + (+props.totalGasolina)).toFixed(0)) + (Number(props.peajes*2)))} pesos</div>
+      <div>Número de peajes calculado {Number(Math.floor((props.inputKilometros)/84).toFixed(0))*2}, su costo es de ${props.converDivisa(Number(props.peajes*numPeajesCalculado))} pesos, para un total de ${props.converDivisa(Number(((+props.precioKm) + (+props.totalGasolina)).toFixed(0)) + (Number(props.peajes*numPeajesCalculado)))} pesos</div>
       :null
       }
     </>

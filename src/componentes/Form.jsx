@@ -169,7 +169,7 @@ const {color} = useContext(Contexto)
      
       <div className="caja-text">
      {/* código 2 */}
-      { <Resultado kms={input.num1} gas={input.num2} totalpeajes={totalpeajes} peajes={peajes} precioKm={precioKm} totalGasolina={totalGasolina} converDivisa={converDivisa} inputKilometros={inputKilometros}/>}
+      { <Resultado kms={input.num1} gas={input.num2} totalpeajes={totalpeajes} peajes={valPeaje} precioKm={precioKm} totalGasolina={totalGasolina} converDivisa={converDivisa} inputKilometros={inputKilometros}/>}
       </div>
        
         </div>
