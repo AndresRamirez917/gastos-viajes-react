@@ -8,7 +8,7 @@ const UseWeather = (city = 'Fresno') => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},Co&appid=58d47201e8f766bb0ca71980a2eefc37&units=metric`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=58d47201e8f766bb0ca71980a2eefc37&units=metric`)
             .then(response => response.json())
             .then(json => {
                 setLoading(false);

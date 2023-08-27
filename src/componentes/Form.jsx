@@ -23,7 +23,7 @@ const Form = () => {
   let totalpeajes=(((inputKilometros)/87).toFixed(2))
   const inputRef = useRef(null);
   const regexp =/^[0-9/s]+$/g
-  const [data, loading, error] = UseWeather("Fresno")
+  const [data, loading, error] = UseWeather("Fresno, co")
 
 
 
@@ -97,11 +97,9 @@ const {color} = useContext(Contexto)
         
         <div className="caja" style={{backgroundColor:color}}> 
         <h1 className="titulo">Cálculo gastos gasolina y peajes</h1>   
-
             {console.log(data)}
         {data && (
         <div className="infoFresno">
-     <p>madre</p>
           <p>Temperatura en {data.city}: {data.temp}º</p>
           <p className="clima">Cielo: {(data.estado==="overcast clouds"
           ?"Nublado"
@@ -109,6 +107,10 @@ const {color} = useContext(Contexto)
           ?"Nubes Dispersas"
           :data.estado==="light rain"
           ?"Lluvia ligera"
+          :data.estado==="scattered clouds"
+          ?"Nubes Diseminadas"
+          :data.estado==="few clouds"
+          ?"Pocas Nubes"
           :null)}</p> 
           {console.log(data.estado)}
           {/* <p>Temperatura: {data.temp}º</p> */}
